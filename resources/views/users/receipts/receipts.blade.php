@@ -4,6 +4,16 @@
 @section('user_content')
 
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             
                  <!-- public er okhan theke table.html copy kore boshalam -->
 
@@ -19,7 +29,7 @@
                    <!-- db te jotota column segula -->
                   <thead>
                     <tr>
-                      <th>User</th>
+                      <th>Admin</th>
                       <th>Total</th>
                       <th>Date</th>
                      
@@ -29,12 +39,11 @@
                   </thead>
                   <tfoot>
                    <tr>
-                      <th>User</th>
-                      <th>Total</th>
-                      <th>Date</th>
+                    <th>Admin</th>
+                      <th>{{$user->receipts->sum('amount')}}</th>
+                      <th colspan="3"></th>
                       
-                      <th>Note</th>
-                      <th class="text-right">Action</th>
+                 
                     </tr>
 
                   </tfoot>
@@ -51,8 +60,15 @@
                         2. relation er jonno [user.php te GROUP function]
                         3.relation er jonno [group.php te user function]
                        --> 
+                    
+                                     <!--
 
-                      <td>{{ $user->name }}</td>
+                        1 .
+                      <td>{{ ($receipt->admin) ? $receipt->admin->name : "" }}</td>
+                      2.   nicher line
+                      -->
+                          
+                      <td>{{ optional($receipt->admin)->name }}</td>
                       <td>{{ $receipt->amount }}</td>
                       <td>{{ $receipt->date }}</td>
                       <td>{{ $receipt->note }}</td>
@@ -65,13 +81,7 @@
 
                          -->
 
-                        <form method="POST" action="{{ route('users.destroy' ,['user'=> $user->id] ) }}">
-
-
-
-                          <!-- for show.get method eta -->
-
-                          <a class="btn btn-info" href="{{ route('users.show',['user' => $user->id]) }}"><i class="fa fa-eye"></i> Show </a>
+                        <form method="POST" action="{{ route('user.receipts.destroy' ,['id'=> $user->id ,'receipt_id' => $receipt->id] ) }}">
 
 
                            <!-- form a obbossoi @csrf dite hobe r post chara onno method hole die dite hobe -->
@@ -84,14 +94,91 @@
                         </form>
                       </td>
                     </tr>
-                    @endforeach                                      
+                    @endforeach    
+
                   </tbody>
-                </table>         
-              </div>
-              </div>
+                </table>  
 
               </div>
+             </div>
+
+          </div>
      
 
+
+<!-- Modal for add new receipt-->
+<!-- only receipt a dhuke  add new receipt korte hobe..user_layout a dile a dely all page theke open hobe-->
+
+<div class="modal fade" id="newReceipt" tabindex="-1" role="dialog" aria-labelledby="newReceiptModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+      {!! Form::open(['route' => ['user.receipts.store',$user->id] , 'method' => 'post']) !!}
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newReceiptModalLabel">new Receipt</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+
+          <div class="form-group row">
+                 <label for="date" class="col-sm-3 text-right col-form-label"><strong>Date:</strong></label>
+
+                <div class="col-sm-9">               
+                 <!-- 
+                 <input type="name" class="form-control" id="name" placeholder="Name">
+                -->
+
+                 {{ Form::date('date' , NULL , ['class' => 'form-control' , 'id' => 'date' , 'placeholder' => 'Date' , 'required']) }}
+
+
+               </div>
+
+                <div class="form-group row">
+                 <label for="amount" class="col-sm-3 text-right col-form-label"><strong>Amount:</strong></label>
+
+                <div class="col-sm-9">               
+                 <!-- 
+                 <input type="name" class="form-control" id="name" placeholder="Name">
+                -->
+
+                 {{ Form::text('amount' , NULL , ['class' => 'form-control' , 'id' => 'amount' , 'placeholder' => 'Amount', 'required']) }}
+
+
+               </div>
+
+                <div class="form-group row">
+                 <label for="note" class="col-sm-3 text-right col-form-label"><strong>Note:</strong></label>
+
+                <div class="col-sm-9">               
+                 <!-- 
+                 <input type="name" class="form-control" id="name" placeholder="Name">
+                -->
+
+                 {{ Form::textarea('note' , NULL , ['class' => 'form-control' , 'id' => 'note' ,'rows'=> '2' ,'placeholder' => 'Note' ,'required']) }}
+
+
+               </div>
+
+          </div>
+         
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit </button>
+      </div>
+    </div>
+                    <!-- MODAL er bahire form close -->
+                  
+   {!! Form::close() !!}
+
+  </div>
+
+</div>  
 
 @stop

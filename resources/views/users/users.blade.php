@@ -68,7 +68,7 @@
                         3.relation er jonno [group.php te user function]
                        --> 
 
-                      <td>{{ $user->group->title }}</td>
+                      <td>{{ optional($user->group)->title }}</td>
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->email }}</td>
                       <td>{{ $user->phone }}</td>

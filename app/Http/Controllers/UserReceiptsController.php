@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\ReceiptRequest;
+
 use App\User;
+use App\Receipt;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserReceiptsController extends Controller
 {
@@ -23,4 +29,34 @@ class UserReceiptsController extends Controller
 
     	return view('users.receipts.receipts' , $this->data);
     }
+
+
+    public function store(Request $request , $user_id)
+    {
+    	$data = $request->all();
+    	$data['user_id'] = $user_id;
+    	$data['admin_id'] = Auth::id();
+
+    	if(Receipt::create($data)){
+    		Session::flash('message' , "Receipt added Successfully");
+    	}
+
+    	return redirect()->route('user.receipts' , ['id' => $user_id]);
+
+    }
+
+    public function destroy($user_id, $receipt_id)
+    {
+
+    	   if (Receipt::destroy($receipt_id) ){
+            Session::flash('message','Receipt Deleted successfully');
+        }
+
+        return redirect()->route('user.receipts' , ['id' => $user_id]);
+
+
+    }
+
+
+
 }

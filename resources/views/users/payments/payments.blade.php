@@ -31,21 +31,18 @@
 
                    <!-- db te jotota column segula -->
                   <thead>
-                    <tr>
-                      <th>Customer</th>
+                   <tr>
+                      <th>Admin</th>
                       <th>Total</th>
-                      <th>Date</th>
-                     
+                      <th>Date</th>                    
                       <th>Note</th>
                       <th class="text-right">Action</th>
                     </tr>
                   </thead>
                   <tfoot>
                    <tr>
-                      <th class="text-right">Total:</th>
-                      <th>{{ $user->payments()->sum('amount') }}</th>
-                     
-                      
+                     <th>Admin</th>
+                      <th>{{ $user->payments()->sum('amount') }}</th>                      
                       <th colspan="3"></th>
                    
                     </tr>
@@ -65,7 +62,7 @@
                         3.relation er jonno [group.php te user function]
                        --> 
 
-                      <td>{{ $user->name }}</td>
+                     <td>{{ optional($payment->admin)->name }}</td>
                       <td>{{ $payment->amount }}</td>
                       <td>{{ $payment->date }}</td>
                       <td>{{ $payment->note }}</td>
@@ -92,93 +89,11 @@
                   </tbody>
                 </table>         
               </div>
-              </div>
+           </div>
 
-              </div>
-
-
-              <!-- Button trigger modal -->
-
-              <!-- PURCHASE a click korle j MODAL ashby seta -->
+         </div>
 
 
 
-
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="newPayment" tabindex="-1" role="dialog" aria-labelledby="newPaymentModalLabel" aria-hidden="true">
-
-  <div class="modal-dialog" role="document">
-
-      {!! Form::open(['route' => ['user.payments.store',$user->id] , 'method' => 'post']) !!}
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newPaymentModalLabel">new payments</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-
-          <div class="form-group row">
-                 <label for="date" class="col-sm-3 text-right col-form-label"><strong>Date:</strong></label>
-
-                <div class="col-sm-9">               
-                 <!-- 
-                 <input type="name" class="form-control" id="name" placeholder="Name">
-                -->
-
-                 {{ Form::date('date' , NULL , ['class' => 'form-control' , 'id' => 'date' , 'placeholder' => 'Date' , 'required']) }}
-
-
-               </div>
-
-                <div class="form-group row">
-                 <label for="amount" class="col-sm-3 text-right col-form-label"><strong>Amount:</strong></label>
-
-                <div class="col-sm-9">               
-                 <!-- 
-                 <input type="name" class="form-control" id="name" placeholder="Name">
-                -->
-
-                 {{ Form::text('amount' , NULL , ['class' => 'form-control' , 'id' => 'amount' , 'placeholder' => 'Amount', 'required']) }}
-
-
-               </div>
-
-                <div class="form-group row">
-                 <label for="note" class="col-sm-3 text-right col-form-label"><strong>Note:</strong></label>
-
-                <div class="col-sm-9">               
-                 <!-- 
-                 <input type="name" class="form-control" id="name" placeholder="Name">
-                -->
-
-                 {{ Form::textarea('note' , NULL , ['class' => 'form-control' , 'id' => 'note' ,'rows'=> '2' ,'placeholder' => 'Note']) }}
-
-
-               </div>
-
-          </div>
-
-         
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit </button>
-      </div>
-    </div>
-                    <!-- MODAL er bahire form close -->
-                  
-   {!! Form::close() !!}
-
-  </div>
-
-</div>
      
 @stop
