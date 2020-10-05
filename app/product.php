@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class product extends Model
 {
@@ -15,4 +16,19 @@ class product extends Model
     	return $this->belongsTo(category::class);
     	
     }
-}
+    
+    public static function listForSelect()
+    {
+    	$arr = [];
+    	$products = Product::all();
+
+    	foreach ($products as $product) {
+    		$arr[$product->id] = $product->title;
+    	}
+
+    	return $arr;
+
+    }
+    
+
+   }

@@ -14,8 +14,11 @@
 		<a class="btn btn-info" href="{{ route('users.index') }}"> <-back</a>
 	</div>
 	<div class="col-md-8 text-right">
-	<a class="btn btn-info" href="{{ url('users/create') }}"><i class="fa fa-plus"></i> new Sale</a>
 
+
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newSale"><i class="fa fa-plus"></i>
+New Sale
+</button>
 
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newPurchase"><i class="fa fa-plus"></i>
 New Purchase
@@ -138,7 +141,6 @@ New Receipt
 
 </div>
 
-     
 
 
 
