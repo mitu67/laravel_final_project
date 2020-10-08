@@ -47,8 +47,6 @@ class UserSalesController extends Controller
     }
 
 
-
-
     public function  invoice($user_id , $invoice_id)
     {
     	$this->data['user'] = User::findOrFail($user_id);

@@ -94,10 +94,19 @@
 
                       		 <!-- form a obbossoi @csrf dite hobe r post chara onno method hole die dite hobe -->
 
+                           @if($user->sales()->count() ==0 
+                           && $user->purchases()->count() ==0 
+                           && $user->payments()->count() ==0 
+                           && $user->receipts()->count() ==0 
+
+                           )
+
                       	@csrf
                       @method('DELETE')
 
-                    <button onclick="return confirm('r u sure?')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                    <button onclick="return confirm('r u sure?')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete
+                    </button>
+                    @endif
              
                       	</form>
                       </td>
