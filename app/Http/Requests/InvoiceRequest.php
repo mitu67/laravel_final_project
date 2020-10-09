@@ -24,7 +24,7 @@ class InvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
         ];
     }
 }

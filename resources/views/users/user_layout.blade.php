@@ -20,7 +20,7 @@
 New Sale
 </button>
 
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newPurchase"><i class="fa fa-plus"></i>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newPurchases"><i class="fa fa-plus"></i>
 New Purchase
 </button>
 
@@ -37,13 +37,14 @@ New Receipt
 </div>
 
 
+
 	              <!-- x -->
 
 @include('users.user_layout_content')
 
 
 
-  
+
 
 
 @stop

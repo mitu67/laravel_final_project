@@ -66,6 +66,7 @@ Route::resource('users', 'UsersController' ); // route theke show baad
 
 Route::get('users/{id}/sales', 'UserSalesController@index')->name('user.sales');
 
+
 // invoice page create kore data post
 Route::post('users/{id}/invoices', 'UserSalesController@createInvoice')->name('user.sales.store');
 // invoice show korbo
@@ -84,6 +85,22 @@ Route::delete('users/{id}/invoices/{invoice_id}/{item_id}', 'UserSalesController
 
 
 Route::get('users/{id}/purchases', 'UserPurchasesController@index')->name('user.purchases');
+
+// invoice create
+Route::post('users/{id}/invoice', 'UserPurchasesController@createInvoice')->name('user.purchases.store');
+// invoice show korbo
+Route::get('users/{id}/invoices/{invoice_id}', 'UserPurchasesController@invoice')->name('user.purchases.invoice_details');
+// invoice delete korbo
+Route::delete('users/{id}/invoices/{invoice_id}', 'UserPurchasesController@destroy')->name('user.purchases.destroy');
+// submit korle ei root a..invoice id te product add korbo
+Route::post('users/{id}/invoices/{invoice_id}', 'UserPurchasesController@addItem')->name('user.purchases.invoices.add_item');
+// invoice id te product add korbo
+Route::delete('users/{id}/invoices/{invoice_id}/{item_id}', 'UserPurchasesController@destroyItem')->name('user.purchases.invoices.delete_item');
+
+
+
+
+
 
 Route::get('users/{id}/payments', 'UserPaymentsController@index')->name('user.payments');
 Route::post('users/{id}/payments','UserPaymentsController@store')->name('user.payments.store');
