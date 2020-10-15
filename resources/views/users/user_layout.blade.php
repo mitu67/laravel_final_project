@@ -1,13 +1,14 @@
 @extends('layout.main')
 
 
+
 @section('main_content')
 
   <!-- user group r new group[(button)+link address] er jonno -->
 
          <!-- page_header ta style.css a ase -->
 
-
+@yield('user_card')
 
 <div class="row clearfix page_header">
 	<div class="col-md-4">
@@ -39,6 +40,7 @@ New Receipt
 
 
 	              <!-- x -->
+
 
 @include('users.user_layout_content')
 

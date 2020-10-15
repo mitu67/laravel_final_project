@@ -108,8 +108,8 @@
                       <th>Challen no</th>
                       <th>Customer</th>
                       <th>Date</th>
-                      <th>{{$totalItem}}</th>
-                      <th>{{$grandTotal}}</th>
+                      <th>Item={{$totalItem}}</th>
+                      <th>Total={{$grandTotal}}</th>
                       <th class="text-right">Action</th>
                     </tr>
 

@@ -59,7 +59,7 @@ class UserReceiptsController extends Controller
            
         }else{
 
-    	return redirect()->route('user.receipts' , ['id' => $user_id]);
+    	return redirect()->route('users.show' , ['id' => $user_id]);
 
        }
 

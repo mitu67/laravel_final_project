@@ -42,6 +42,8 @@ class UserSalesController extends Controller
 
     	if($invoice = SaleInvoice::create($data));
 
+        //'invoice_id' => $invoice->id ...eta 
+
     	return redirect()->route('user.sales.invoice_details', ['id' => $user_id ,'invoice_id' => $invoice->id]);
 
     }

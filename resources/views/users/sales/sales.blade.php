@@ -75,19 +75,14 @@
 
                       <td class="text-right">
 
-                         <!-- delete korte hoy id dea ja loop theke pabo 
-                          form niscchi karon delete method use kora lagbe tai.
 
-                         -->
+                          <form method="POST" action="{{ route('user.sales.destroy' ,['id'=> $user->id ,'invoice_id' => $sale->id ] ) }}">
 
-                        <form method="POST" action="{{ route('user.sales.destroy' ,['id'=> $user->id , 'invoice_id' => $sale->id ] ) }}">
+                         
 
-                          <a class="btn btn-info" href="{{ route('user.sales.invoice_details',['id' => $user->id ,'invoice_id' => $sale->id]) }}"><i class="fa fa-eye"></i> Show </a>
+                          <a class="btn btn-info" href="{{ route('user.sales.invoice_details',['id' => $user->id , 'invoice_id' => $sale->id]) }}"><i class="fa fa-eye"></i> Show </a>
 
-
-                           <!-- form a obbossoi @csrf dite hobe r post chara onno method hole die dite hobe -->
-
-                           @if($itemQty == 0)
+                            @if($itemQty == 0)
 
                         @csrf
                       @method('DELETE')
@@ -96,9 +91,16 @@
                     </button>
                     @endif
              
+
+
+
                         </form>
+
+                      
                       </td>
+
                     </tr>
+
                     @endforeach                                      
                   </tbody>
 

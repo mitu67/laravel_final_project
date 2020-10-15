@@ -56,8 +56,13 @@ class UserPurchasesController extends Controller
 
     public function invoice($user_id , $invoice_id)
     {
-    	$this->data['user'] = User::findOrFail($user_id);
-    	$this->data['invoice'] = PurchaseInvoice::findOrFail($invoice_id);
+    	$this->data['user'] =         User::findOrFail($user_id);
+    	$this->data['invoice'] =      PurchaseInvoice::findOrFail($invoice_id);
+        $this->data['totalPayable'] = $this->data['invoice']->items()->sum('total');
+
+        $this->data['totalPaid'] =    $this->data['invoice']->payments()->sum('amount');
+        
+
     	$this->data['products'] = Product::listForSelect();
 
 

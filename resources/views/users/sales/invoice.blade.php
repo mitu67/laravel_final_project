@@ -83,7 +83,7 @@
 
                             <th>
                                 <button class="btn btn-info" data-toggle="modal" data-target="#newReceiptForInvoice">
-                                    <i class="fa fa-plus"></i>Add Recept/Paymoney
+                                    <i class="fa fa-plus"></i>Add Recept/customerPaymoney
                             </button>
                         </th>
                             <th colspan="2" class="text-right">Paid:</th>

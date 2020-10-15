@@ -73,7 +73,7 @@ Route::post('users/{id}/invoices', 'UserSalesController@createInvoice')->name('u
 Route::get('users/{id}/invoices/{invoice_id}', 'UserSalesController@invoice')->name('user.sales.invoice_details');
 
 // invoice delete korbo
-Route::delete('users/{id}/invoices/{invoice_id}', 'UserSalesController@destroy')->name('user.sales.destroy');
+Route::delete('users/{id}/invoices/{invoice_id}','UserSalesController@destroy')->name('user.sales.destroy');
 
 // submit korle ei root a..invoice id te product add korbo
 Route::post('users/{id}/invoices/{invoice_id}', 'UserSalesController@addItem')->name('user.sales.invoices.add_item');
@@ -103,7 +103,7 @@ Route::delete('users/{id}/invoices/{invoice_id}/{item_id}', 'UserPurchasesContro
 
 
 Route::get('users/{id}/payments', 'UserPaymentsController@index')->name('user.payments');
-Route::post('users/{id}/payments','UserPaymentsController@store')->name('user.payments.store');
+Route::post('users/{id}/payments/{invoice_id?}','UserPaymentsController@store')->name('user.payments.store');
 Route::delete('users/{id}/payments/{payment_id}','UserPaymentsController@destroy')->name('user.payments.destroy');
 
 
