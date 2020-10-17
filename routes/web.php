@@ -117,7 +117,10 @@ Route::delete('users/{id}/receipts/{receipt_id}', 'UserReceiptsController@destro
 
 
 Route::resource('categories', 'CategoriesController' , ['except' => ['show']] );
+
 Route::resource('products', 'ProductsController');
+Route::get('stocks','ProductsStockController@index')->name('stocks');
+
 
 });
 
