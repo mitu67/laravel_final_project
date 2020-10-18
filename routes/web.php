@@ -122,6 +122,11 @@ Route::resource('products', 'ProductsController');
 Route::get('stocks','ProductsStockController@index')->name('stocks');
 
 
+Route::get('reports/sales','Reports\SaleReportController@index')->name('reports.sales');
+Route::get('reports/purchases','Reports\PurchaseReportController@index')->name('reports.purchases');
+
+
+
 });
 
 
