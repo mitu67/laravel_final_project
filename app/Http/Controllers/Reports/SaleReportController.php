@@ -10,7 +10,7 @@ class SaleReportController extends Controller
 {
     public function index(Request $request)
     {
-    	//$start_date = $request->get('start_date' , date('y-m-d'));
+
     	
     	$this->data['start_date'] = $request->get('start_date' , date('y-m-d'));
     	$this->data['end_date'] = $request->get('end_date' , date('y-m-d'));
