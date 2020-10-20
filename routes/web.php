@@ -23,10 +23,8 @@ Route::group(['middleware' => 'auth'] , function(){
 
 
 
-Route::get('dashboard', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index');
 Route::get('test', function () {
     return ('welcome');
 });
