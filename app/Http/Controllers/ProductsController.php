@@ -90,14 +90,15 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data               = $request->all(); 
+        $data                   = $request->all(); 
 
-       $product               = Product::find($id);
+       $product                  = Product::find($id);
        $product->category_id     = $data['category_id'];
-       $product->title         = $data['title'];
-       $product->description        = $data['description'];
-       $product->cost_price        = $data['cost_price'];
-       $product->price      = $data['price'];
+       $product->title           = $data['title'];
+       $product->description     = $data['description'];
+       $product->cost_price      = $data['cost_price'];
+       $product->price           = $data['price'];
+       $product->has_stock       = $data['has_stock'];
 
          if ($product->save()){
             Session::flash('message','Product Updated successfully');

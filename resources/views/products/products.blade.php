@@ -39,6 +39,7 @@
                       <th>description</th>
                       <th>cost_price</th>
                       <th>price</th>
+                      <th>Has_stock</th>
                       <th class="text-right">Action</th>
                     </tr>
                   </thead>
@@ -50,6 +51,7 @@
                       <th>description</th>
                       <th>cost_price</th>
                       <th>price</th>
+                      <th>Has_stock</th>
                       <th class="text-right">Action</th>
                     </tr>
 
@@ -65,6 +67,7 @@
                       <td>{{ $product->description }}</td>
                       <td>{{ $product->cost_price }}</td>
                       <td>{{ $product->price }}</td>
+                      <td>{{ ($product->has_stock == 1) ? 'Yes' : 'No' }}</td>
                       <td class="text-right">
 
                       	 <!-- delete korte hoy id dea ja loop theke pabo 

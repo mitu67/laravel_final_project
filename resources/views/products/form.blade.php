@@ -124,6 +124,13 @@
                </div>
                 </div> 
 
+                <div class="form-group row">
+                 <label for="name" class="col-sm-2 text-right col-form-label"><strong>Has stock:<span class="text-danger">*</span></strong></label>
+                <div class="col-sm-2">
+                  {{ Form::select('has_stock', ['1' =>'Yes' , '0' => 'no'] , NULL , ['class' => 'form-control' , 'id' => 'group'])}}
+               </div>
+                </div>
+
 
                  <div class="form-group row">
                  <label for="price" class="col-sm-2 text-right col-form-label"> </label>

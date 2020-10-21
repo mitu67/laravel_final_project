@@ -144,7 +144,7 @@
                  <input type="name" class="form-control" id="name" placeholder="Name">
                 -->
 
-                 {{ Form::text('quantity' , NULL , ['class' => 'form-control' , 'id' => 'quantity' , 'placeholder' => 'Quantity', 'required']) }}
+                 {{ Form::text('quantity' , NULL , ['class' => 'form-control' , 'id' => 'quantity' ,'onkeyup' => 'getTotal()' , 'placeholder' => 'Quantity', 'required']) }}
 
                </div>
 
@@ -157,7 +157,7 @@
                  <input type="name" class="form-control" id="name" placeholder="Name">
                 -->
 
-                 {{ Form::text('price' , NULL , ['class' => 'form-control' , 'id' => 'price' , 'placeholder' => 'Price', 'required']) }}
+                 {{ Form::text('price' , NULL , ['class' => 'form-control' , 'id' => 'price' , 'onkeyup' => 'getTotal()' ,'placeholder' => 'Price', 'required']) }}
 
 
                </div>
@@ -196,6 +196,29 @@
  <!--  sales invoice a ekhanei model deoua..check pls  -->
 
 @include('users.purchases.modal')
+
+
+<script type="text/javascript">
+  
+ function getTotal()
+ {
+  var price = document.getElementById("price").value;
+  var quantity = document.getElementById("quantity").value;
+  
+    
+      if(price && quantity)
+      {
+       
+        var total = price * quantity;
+
+        document.getElementById("total").value = total;
+         
+      }
+
+ }
+
+
+</script>
 
 
 @stop
